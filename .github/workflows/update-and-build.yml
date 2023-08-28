@@ -1,0 +1,22 @@
+name: Update and Build
+
+on:
+  repository_dispatch:
+    types:
+      - update-and-build  # 与B仓库的workflow中的事件类型一致
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }}
+
+      - name: Build
+        run: |
+          echo hello world
+          npm run build
