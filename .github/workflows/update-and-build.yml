@@ -20,5 +20,3 @@ jobs:
         run: |
           echo hello world
           git submodule update
-          npm install
-          npm run build
