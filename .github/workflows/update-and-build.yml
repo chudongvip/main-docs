@@ -16,7 +16,15 @@ jobs:
           ref: ${{ github.event.client_payload.ref }}
       - run: echo ${{ github.event.client_payload.sha }}
 
-      - name: Build
+      - name: Update submodules
         run: |
-          echo hello world
-          git submodule update
+          echo begin update submodules
+          git submodule update --init --recursive
+          git submodule foreach --recursive git fetch
+          git submodule foreach git merge origin/main --ff-only
+          git commit -am "Update submodules" --allow-empty
+          git push
+
+          - name: Build
+            run: |
+              echo begin Build
