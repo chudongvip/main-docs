@@ -29,6 +29,7 @@ jobs:
 
       - name:  Commit and Push Changes
         run: |
+          pwd
           git commit -am "update docs"
           git push
 
