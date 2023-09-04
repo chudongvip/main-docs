@@ -28,7 +28,7 @@ jobs:
           git submodule update --init --recursive
           cd blog
           echo fetch all
-          git foreach --all
+          git fetch --all
           echo checkout
           git checkout main
           echo commit and push
