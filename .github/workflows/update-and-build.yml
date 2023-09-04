@@ -10,28 +10,28 @@ jobs:
     runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
 
     steps:
-      - run: echo Checkout self
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          path: main
+      # - run: echo Checkout self
+      # - name: Checkout
+      #   uses: actions/checkout@v3
+      #   with:
+      #     path: main
 
       - run: echo Checkout sub docs
 
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          repository: ${{ github.event.client_payload.repository }}
+          # repository: ${{ github.event.client_payload.repository }}
           token: ${{ secrets.PAT }}  # A仓库的访问令牌
           ref: main
-          path: sub-docs
-          # submodules: 'recursive'
+          # path: sub-docs
+          submodules: 'recursive'
 
-      - name:  Commit and Push Changes
-        run: |
-          pwd
-          git commit -am "update docs"
-          git push
+      # - name:  Commit and Push Changes
+      #   run: |
+      #     pwd
+      #     git commit -am "update docs"
+      #     git push
 
       # - name: Checkout self
       #   uses: actions/checkout@v3
@@ -40,19 +40,19 @@ jobs:
       #     ref: main
       #     submodules: 'recursive'
 
-      # - name: Update submodules
-      #   run: |
-      #     echo begin update submodules
-      #     echo git submodule update
-      #     git submodule update --init --recursive
-      #     echo git submodule foreach
-      #     git submodule foreach --recursive git fetch
-      #     echo git submodule foreach git merge origin/main
-      #     git submodule foreach git merge origin/main --ff-only
-      #     echo git commit
-      #     git commit -am "Update submodules" --allow-empty
-      #     echo git push
-      #     git push
+      - name: Update submodules
+        run: |
+          echo begin update submodules
+          echo git submodule update
+          git submodule update --init --recursive
+          echo git submodule foreach
+          git submodule foreach --recursive git fetch
+          echo git submodule foreach git merge origin/main
+          git submodule foreach git merge origin/main --ff-only
+          echo git commit
+          git commit -am "Update submodules" --allow-empty
+          echo git push
+          git push
 
       - name: Build
         run: |
