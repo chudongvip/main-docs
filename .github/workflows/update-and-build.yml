@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
 
     steps:
-      - run: echo Checkout sub docs ${{ toJson(github) }}
+      - run: echo Checkout sub docs
 
       - name: Checkout code
         uses: actions/checkout@v3
