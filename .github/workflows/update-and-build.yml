@@ -27,7 +27,8 @@ jobs:
           path: sub-docs
           # submodules: 'recursive'
 
-      - run: |
+      - name:  Commit and Push Changes
+        run: |
           git commit -am "update docs"
           git push
 
