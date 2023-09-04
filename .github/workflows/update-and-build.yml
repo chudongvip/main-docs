@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       # - name: Checkout code
       #   uses: actions/checkout@v3
-      #   with:
-      #     # repository: ${{ github.event.client_payload.repository }}
-      #     token: ${{ secrets.PAT }}  # A仓库的访问令牌
-      #     ref: main
-      #     # path: sub-docs
-      #     submodules: 'recursive'
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          # repository: ${{ github.event.client_payload.repository }}
+          token: ${{ secrets.PAT }}  # A仓库的访问令牌
+          # ref: main
+          # path: sub-docs
+          submodules: 'recursive'
 
       - name: Update Submodules
         run: |
