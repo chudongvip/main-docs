@@ -10,21 +10,36 @@ jobs:
     runs-on: ubuntu-latest  # 设置运行环境，这里假设使用Ubuntu
 
     steps:
+      - run: echo Checkout sub docs ${{ toJson(github) }}
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
+          repository: ${{ github.event.client_payload.repository }}
           token: ${{ secrets.PAT }}  # A仓库的访问令牌
           ref: main
-          submodules: 'recursive'
+          # submodules: 'recursive'
 
-      - name: Update submodules
-        run: |
-          echo begin update submodules
-          git submodule update --init --recursive
-          git submodule foreach --recursive git fetch
-          git submodule foreach git merge origin/main --ff-only
-          git commit -am "Update submodules" --allow-empty
-          git push
+      # - name: Checkout self
+      #   uses: actions/checkout@v3
+      #   with:
+      #     token: ${{ secrets.PAT }}  # A仓库的访问令牌
+      #     ref: main
+      #     submodules: 'recursive'
+
+      # - name: Update submodules
+      #   run: |
+      #     echo begin update submodules
+      #     echo git submodule update
+      #     git submodule update --init --recursive
+      #     echo git submodule foreach
+      #     git submodule foreach --recursive git fetch
+      #     echo git submodule foreach git merge origin/main
+      #     git submodule foreach git merge origin/main --ff-only
+      #     echo git commit
+      #     git commit -am "Update submodules" --allow-empty
+      #     echo git push
+      #     git push
 
       - name: Build
         run: |
