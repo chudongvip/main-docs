@@ -11,6 +11,10 @@ jobs:
 
     steps:
       - run: echo Checkout sub docs ${{ toJson(github) }}
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: main
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,6 +22,7 @@ jobs:
           repository: ${{ github.event.client_payload.repository }}
           token: ${{ secrets.PAT }}  # A仓库的访问令牌
           ref: main
+          path: sub-docs
           # submodules: 'recursive'
 
       # - name: Checkout self
