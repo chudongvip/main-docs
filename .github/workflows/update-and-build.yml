@@ -14,7 +14,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT }}  # A仓库的访问令牌
-          # ref: ${{ github.event.client_payload.ref }}
           ref: main
           submodules: 'recursive'
 
