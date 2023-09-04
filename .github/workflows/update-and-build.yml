@@ -24,12 +24,12 @@ jobs:
 
       - name: Update Submodules
         run: |
-          echo init submodules
+          echo init
           git submodule update --init --recursive
           cd blog
           echo fetch all
           git submodule foreach --all
-          echo checkout main
+          echo checkout
           git checkout main
           echo commit and push
           git commit -am "Update submodules" --allow-empty
