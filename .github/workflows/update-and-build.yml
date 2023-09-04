@@ -17,7 +17,8 @@ jobs:
           ref: main
           submodules: 'recursive'
 
-      - run: |
+      - name: Update submodules
+        run: |
           echo begin update submodules
           git submodule update --init --recursive
           git submodule foreach --recursive git fetch
