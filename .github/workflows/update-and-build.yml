@@ -29,8 +29,8 @@ jobs:
           cd blog
           echo fetch all
           git fetch --all
-          echo checkout
-          git checkout main
+          # echo checkout
+          # git checkout main
           echo commit and push
           git commit -am "Update submodules" --allow-empty
           git push
