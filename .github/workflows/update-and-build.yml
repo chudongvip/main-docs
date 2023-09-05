@@ -31,8 +31,13 @@ jobs:
           git fetch --all
           # echo checkout
           # git checkout main
+
+      - name: Commit Changes
+        run: |
+          git config --global user.email "604748948@qq.com"
+          git config --global user.name "chudongvip"
           echo commit and push
           git commit -am "Update submodules" --allow-empty
           # git push
-          git push origin HEAD:${{ github.ref }}
+          git push
 
