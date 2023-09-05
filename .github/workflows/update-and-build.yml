@@ -33,5 +33,6 @@ jobs:
           # git checkout main
           echo commit and push
           git commit -am "Update submodules" --allow-empty
-          git push
+          # git push
+          git push origin HEAD:${{ github.ref }}
 
